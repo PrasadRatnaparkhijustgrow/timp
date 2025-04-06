@@ -1,1 +1,45 @@
-<p>vendor-list works!</p>
+<c-row> 
+ <c-col xs="12">
+    <c-card class="mb-4">
+        <c-card-header ngPreserveWhitespaces>
+            <strong>Vendor List</strong>
+          </c-card-header>
+      <c-card-body>
+        <table [bordered]="true" [hover]="true" [striped]="true" cTable >
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Company</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>&#64;mdo</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>&#64;fat</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry the Bird</td>
+              <td>&#64;twitter</td>
+              <td>&#64;fat</td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
