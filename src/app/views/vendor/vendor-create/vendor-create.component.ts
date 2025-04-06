@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
-import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, FormControlDirective, FormDirective, FormLabelDirective, FormSelectDirective, ButtonDirective} from '@coreui/angular';
+import {   ModalBodyComponent,
+  ModalComponent,
+  ModalFooterComponent,
+  ModalHeaderComponent,
+  ModalTitleDirective,RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, FormControlDirective, FormDirective, FormLabelDirective, FormSelectDirective, ButtonDirective} from '@coreui/angular';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RestApiService } from '../../../services/rest.api.service';
 
 @Component({
   selector: 'app-vendor-create',
-  imports: [RowComponent, ColComponent, TextColorDirective, ReactiveFormsModule,CardComponent, CardHeaderComponent, CardBodyComponent, FormControlDirective, FormsModule, FormDirective, FormLabelDirective, FormSelectDirective, ButtonDirective],
+  imports: [  ModalBodyComponent,
+    ModalComponent,
+    ModalFooterComponent,
+    ModalHeaderComponent,
+    ModalTitleDirective,RowComponent, ColComponent, TextColorDirective, ReactiveFormsModule,CardComponent, CardHeaderComponent, CardBodyComponent, FormControlDirective, FormsModule, FormDirective, FormLabelDirective, FormSelectDirective, ButtonDirective],
   templateUrl: './vendor-create.component.html',
   styleUrl: './vendor-create.component.scss',
 })
@@ -31,10 +40,30 @@ export class VendorCreateComponent {
 
   };
 
-  constructor() {}
+  public visible = false;
+
+  constructor(public restApi: RestApiService) {
+   }
+ 
 
   onSubmit() {
     console.log('Vendor Created:', this.vendorForm);
-    // Here you can add your logic to handle the form submission, like sending the data to a server.
+    this.visible = true;
+    this.restApi.postAPI('/vendors/create', this.vendorForm).subscribe(
+      data => {
+        console.log(data)
+      },
+      err => {
+        console.log(err)
+      }
+    );
+  }
+
+  toggleLiveDemo() {
+    this.visible = !this.visible;
+  }
+
+  handleLiveDemoChange(event: any) {
+    this.visible = event;
   }
 }

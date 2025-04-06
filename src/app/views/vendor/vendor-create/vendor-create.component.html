@@ -126,3 +126,17 @@
     </c-card>
   </c-col>
 </c-row>
+
+<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Info</h5>
+  </c-modal-header>
+  <c-modal-body>Vendor created successfully!</c-modal-body>
+  <c-modal-footer>
+    <button (click)="toggleLiveDemo()" cButton color="secondary">
+      OK
+    </button>
+  </c-modal-footer>
+</c-modal>
+
+
