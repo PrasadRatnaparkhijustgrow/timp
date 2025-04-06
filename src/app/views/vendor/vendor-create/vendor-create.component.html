@@ -5,23 +5,23 @@
         <strong>Profile</strong>
       </c-card-header>
       <c-card-body>
-        <form cForm class="row g-3">
+        <form class="row g-3">
           <c-col md="12">
             <label cLabel for="venderName">Vendor Name</label>
-            <input cFormControl id="venderName" type="text" />
+            <input cFormControl id="venderName" type="text" [(ngModel)]="vendorForm.vendorName" name="vendorName" />
           </c-col>
           <c-col md="12">
             <label cLabel for="companyName">Company Name</label>
-            <input cFormControl id="companyName" type="text" />
+            <input cFormControl id="companyName" type="text" [(ngModel)]="vendorForm.companyName" name="companyName"/>
           </c-col>
           <c-col md="6">
             <label cLabel for="email">Email</label>
-            <input cFormControl id="email" type="email" />
+            <input cFormControl id="email" type="email" [(ngModel)]="vendorForm.email" name="email"/>
           </c-col>
           <c-col md="6">
-            <label cLabel for="inputEmail4">Phone</label>
-            <input cFormControl id="phone" type="text" />
-          </c-col>         
+            <label cLabel for="phone">Phone</label>
+            <input cFormControl id="phone" type="text" [(ngModel)]="vendorForm.phone" name="phone"/>
+          </c-col> 
         </form>
       </c-card-body>
     </c-card>
@@ -32,14 +32,14 @@
         <strong>Address</strong>
       </c-card-header>
       <c-card-body>
-        <form cForm class="row g-3">
+        <form class="row g-3">
           <c-col xs="12">
             <label cLabel for="address">Address</label>
-            <input cFormControl id="address" placeholder="1234 Main St" />
+            <input cFormControl id="address" placeholder="1234 Main St" [(ngModel)]="vendorForm.address" name="address"/>
           </c-col>
           <c-col md="12">
             <label cLabel for="city">City</label>
-            <input cFormControl id="city" />
+            <input cFormControl id="city" [(ngModel)]="vendorForm.city" name="city" />
           </c-col>
           <c-col md="5">
             <label cLabel for="state">State</label>
@@ -57,7 +57,7 @@
           </c-col>
           <c-col md="2">
             <label cLabel for="zip">Zip</label>
-            <input cFormControl id="zip" />
+            <input cFormControl id="zip" [(ngModel)]="vendorForm.zip" name="zip"/>
           </c-col>
         </form>
       </c-card-body>
@@ -69,19 +69,19 @@
         <strong>Account</strong>
       </c-card-header>
       <c-card-body>
-        <form cForm class="row g-3">
+        <form class="row g-3">
           <c-col md="12">
             <label cLabel for="gst">GST</label>
-            <input cFormControl id="gst" type="text" />
+            <input cFormControl id="gst" type="text" [(ngModel)]="vendorForm.gst" name="gst"/>
           </c-col>
           <c-col md="12">
             <label cLabel for="pan">PAN</label>
-            <input cFormControl id="pan" type="text" />
+            <input cFormControl id="pan" type="text" [(ngModel)]="vendorForm.pan" name="pan"/>
           </c-col>
           <c-col md="12">
             <label cLabel for="aadhar">Aadhar</label>
-            <input cFormControl id="aadhar" type="text" />
-          </c-col>         
+            <input cFormControl id="aadhar" type="text" [(ngModel)]="vendorForm.aadhar" name="aadhar"/>
+          </c-col>   
         </form>
       </c-card-body>
     </c-card>
@@ -92,27 +92,27 @@
         <strong>Bank Details</strong>
       </c-card-header>
       <c-card-body>
-        <form cForm class="row g-3">
+        <form class="row g-3">
           <c-col md="12">
             <label cLabel for="accountHolder">Account Holder</label>
-            <input cFormControl id="accountHolder" type="text" />
+            <input cFormControl id="accountHolder" type="text" [(ngModel)]="vendorForm.accountHolder" name="accountHolder"/>
           </c-col>
           <c-col md="6">
             <label cLabel for="bankName">Bank Name</label>
-            <input cFormControl id="bankName" type="text" />
+            <input cFormControl id="bankName" type="text" [(ngModel)]="vendorForm.bankName" name="bankName"/>
           </c-col>
           <c-col md="6">
             <label cLabel for="branchName">Branch Name</label>
-            <input cFormControl id="branchName" type="text" />
+            <input cFormControl id="branchName" type="text" [(ngModel)]="vendorForm.branchName" name="branchName"/>
           </c-col>     
           <c-col md="6">
             <label cLabel for="ifsc">IFSC Code</label>
-            <input cFormControl id="ifsc" type="text" />
+            <input cFormControl id="ifsc" type="text" [(ngModel)]="vendorForm.ifsc" name="ifsc"/>
           </c-col>
           <c-col md="6">
             <label cLabel for="acnumber">Account Number</label>
-            <input cFormControl id="acnumber" type="text" />
-          </c-col>         
+            <input cFormControl id="acnumber" type="text" [(ngModel)]="vendorForm.acnumber" name="acnumber"/>
+          </c-col>  
         </form>
       </c-card-body>
     </c-card>
@@ -121,7 +121,7 @@
   <c-col xs="12">
     <c-card class="mb-4">
       <c-card-body>
-        <button cButton type="submit">Save</button>
+        <button (click)="onSubmit()" cButton type="submit">Save</button>
       </c-card-body>
     </c-card>
   </c-col>
