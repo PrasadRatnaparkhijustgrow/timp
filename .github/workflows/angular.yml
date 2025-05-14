@@ -2,7 +2,7 @@ name: Angular ESLint
 
 on:
   push:
-    branches: [Test_Frontend_dev_branch]
+    branches: [Test_dev]
   pull_request:
     branches: [dev]
 
