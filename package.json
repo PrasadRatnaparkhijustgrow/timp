@@ -12,9 +12,10 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
-    "build": "ng build --aot --optimization --progress",
-    "watch": "ng build --watch --configuration development",
+     "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "lint": "ng lint",
     "test": "ng test"
   },
   "private": true,
