@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://thingsrms.com/api' // Change this for production
+    apiUrl: 'https://dev.dd7ckgx3s3g28.amplifyapp.com/api' // Change this for production
   };
   
