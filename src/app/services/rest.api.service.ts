@@ -13,7 +13,7 @@ import { environment } from '../environments/environment';
 export class RestApiService {
 
   // Define API
-  private apiURL = environment.apiUrl || 'http://localhost:8445/api';
+  private apiURL = environment.apiUrl || 'http://localhost:8080';
 
   constructor(private http: HttpClient, private authservice: AuthService) {
   }

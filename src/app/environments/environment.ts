@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://dev.dd7ckgx3s3g28.amplifyapp.com/api' // Change this based on your backend
+    apiUrl: 'http://3.110.204.145' // Change this based on your backend
   };
   
