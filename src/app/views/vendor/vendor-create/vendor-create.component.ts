@@ -19,6 +19,8 @@ import { RestApiService } from '../../../services/rest.api.service';
 })
 export class VendorCreateComponent {
 
+  message = "Vendor created successfully!"
+
   vendorForm = {
     vendorName: 'John Doe',
     companyName: 'Doe Enterprises',
@@ -49,12 +51,16 @@ export class VendorCreateComponent {
   onSubmit() {
     console.log('Vendor Created:', this.vendorForm);
     this.visible = true;
-    this.restApi.postAPI('/vendors/create', this.vendorForm).subscribe(
+    this.restApi.postAPI('/vendors', this.vendorForm).subscribe(
       data => {
         console.log(data)
+        this.message = "Vendor created successfully!"
+        this.visible = true;
       },
       err => {
         console.log(err)
+        this.message=err
+        this.visible = true;
       }
     );
   }
@@ -63,7 +69,5 @@ export class VendorCreateComponent {
     this.visible = !this.visible;
   }
 
-  handleLiveDemoChange(event: any) {
-    this.visible = event;
-  }
+
 }
