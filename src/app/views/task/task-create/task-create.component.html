@@ -1,1 +1,55 @@
-<p>task-create works!</p>
+<c-col xs="6">
+  <c-card class="mb-4">
+    <c-card-header ngPreserveWhitespaces>
+      <strong>Task</strong>
+    </c-card-header>
+    <c-card-body>
+      <form class="row g-3" (ngSubmit)="onSubmit()">
+        <c-col md="12">
+          <label cLabel for="taskname"> Task Name </label>
+          <input cFormControl id="taskname" type="text" [(ngModel)]="taskForm.taskname" name="taskname" />
+        </c-col>
+        <c-col md="12">
+          <label cLabel for="description"> Description </label>
+          <input cFormControl id="description" type="text" [(ngModel)]="taskForm.description" name="description" />
+        </c-col>
+        <c-col md="12">
+          <label cLabel for="deadlines"> Deadlines </label>
+          <input cFormControl id="deadlines" type="date" [(ngModel)]="taskForm.deadlines" name="deadlines" />
+          </c-col>
+        <c-col md="6">
+          <label cLabel for="priorities"> Priorities </label>
+          <select cFormControl id="priorities" [(ngModel)]="taskForm.priorities" name="priorities">
+            <option value="">Select Priority</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Urgent">Urgent</option>
+          </select>
+        </c-col>
+
+        <c-col md="12">
+          <label cLabel for="attachments"> Attachments </label>
+          <input cFormControl id="attachments" type="file" multiple (change)="onFileSelected($event)" />
+          </c-col>
+
+        <c-col xs="12">
+          <button cButton type="submit" color="primary">Create Task</button>
+        </c-col>
+      </form>
+    </c-card-body>
+  </c-card>
+</c-col>
+
+<c-modal #liveDemo [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Task Creation Status</h5>
+    <button cCloseButton type="button" (click)="toggleLiveDemo()" aria-label="Close"></button>
+  </c-modal-header>
+  <c-modal-body>
+    Task created successfully!
+  </c-modal-body>
+  <c-modal-footer>
+    <button cButton color="secondary" (click)="toggleLiveDemo()">Close</button>
+  </c-modal-footer>
+</c-modal>
