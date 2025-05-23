@@ -9,7 +9,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "coreui-free-angular-admin-template": {
+    "timp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -81,10 +81,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "coreui-free-angular-admin-template:build:production"
+              "buildTarget": "timp:build:production"
             },
             "development": {
-              "buildTarget": "coreui-free-angular-admin-template:build:development"
+              "buildTarget": "timp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,7 +92,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "coreui-free-angular-admin-template:build"
+            "buildTarget": "timp:build"
           }
         },
         "test": {

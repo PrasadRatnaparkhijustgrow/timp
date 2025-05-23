@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TableDirective,  RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent } from '@coreui/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { IconDirective } from '@coreui/icons-angular';
   styleUrl: './vendor-list.component.scss'
 })
 
-export class VendorListComponent {
+export class VendorListComponent implements OnInit {
 
   vendorList: { id: number; name: string; company: string; status: string }[] = [];
 
