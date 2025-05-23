@@ -41,7 +41,7 @@
   </c-card>
 </c-col>
 
-<c-modal #taskModal [visible]="visible" (visibleChange)="handleModalChange($event)">
+<c-modal id="taskModal" [visible]="visible" (visibleChange)="handleModalChange($event)">
   <c-modal-header>
     <h5 cModalTitle>Task Creation Status</h5>
     <button cCloseButton type="button" (click)="toggleModal()" aria-label="Close"></button>
