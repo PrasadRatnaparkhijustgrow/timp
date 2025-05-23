@@ -4,7 +4,7 @@ import {
   ModalBodyComponent,
   ModalComponent,
   ModalFooterComponent,
-  ModalHeaderComponent, 
+  ModalHeaderComponent,
   ModalTitleDirective,
   RowComponent,
   ColComponent,
@@ -15,12 +15,12 @@ import {
   FormControlDirective,
   FormDirective,
   FormLabelDirective,
-  FormSelectDirective, 
+  FormSelectDirective,
   ButtonDirective
 } from '@coreui/angular';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RestApiService } from '../../../services/rest.api.service';
-import { HttpHeaders } from '@angular/common/http'; 
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-task-create',
@@ -43,7 +43,7 @@ import { HttpHeaders } from '@angular/common/http';
     FormControlDirective,
     FormDirective,
     FormLabelDirective,
-    FormSelectDirective, 
+    FormSelectDirective,
     ButtonDirective,
   ],
   templateUrl: './task-create.component.html',
@@ -65,11 +65,11 @@ export class TaskCreateComponent {
   constructor(public restApi: RestApiService) {
   }
 
-  
+
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files) {
-      this.selectedFiles = Array.from(input.files); 
+      this.selectedFiles = Array.from(input.files);
       console.log('Selected Files:', this.selectedFiles);
     }
   }
@@ -90,10 +90,10 @@ export class TaskCreateComponent {
     // Append each selected file
     this.selectedFiles.forEach((file, index) => {
       formData.append(`attachments[${index}]`, file, file.name); // Use an array-like name for backend parsing
-      
+
     });
 
-    
+
     this.restApi.postAPI('/task/create', formData).subscribe(
       data => {
         console.log('Upload Success:', data);
@@ -106,7 +106,7 @@ export class TaskCreateComponent {
         if (fileInput) {
           fileInput.value = ''; // Clear the file input display
         }
-        this.toggleLiveDemo(); // Hide the modal after submission
+        this.toggleModal(); // Hide the modal after submission
       },
       err => {
         console.error('Upload Error:', err);
@@ -115,11 +115,11 @@ export class TaskCreateComponent {
     );
   }
 
-  toggleLiveDemo() {
+  toggleModal() {
     this.visible = !this.visible;
   }
 
-  handleLiveDemoChange(event: any) {
+  handleModalChange(event: any) {
     this.visible = event;
   }
 }
