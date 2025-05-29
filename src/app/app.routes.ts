@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,19 @@ export const routes: Routes = [
         path: 'login',
         loadChildren: () => import('./views/login/routes').then((m) => m.routes)
       }
+    ]
+  },
+  {
+    path: '',
+   component: DefaultLayoutComponent,
+    data: {
+      title: 'Dashboard'
+    },
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
+        }
     ]
   },
   {
@@ -59,7 +73,7 @@ export const routes: Routes = [
     ]
   },
 
-  
+  { path: 'dashboard', component: DashboardComponent},
 
   { path: '**', redirectTo: 'login' }
 ];
