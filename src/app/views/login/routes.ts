@@ -5,9 +5,9 @@ export const routes: Routes = [
   {
 
     path: '',
-    loadComponent: () => import('./dashboard.component').then(m => m.DashboardComponent),
+    loadComponent: () => import('./login.component').then(m => m.LoginComponent),
     data: {
-      title: `dashboard`
+      title: `login`
     }
   }
 ];
