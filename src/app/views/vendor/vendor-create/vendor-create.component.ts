@@ -85,7 +85,7 @@ export class VendorCreateComponent {
 
     console.log(newRequest)  //to watch in web
 
-    this.restApi.postAPI('/vendors', newRequest).subscribe(
+    this.restApi.postAPI('/api/vendors', newRequest).subscribe(
       data => {
         console.log(data)
         this.message = "Vendor created successfully!"
