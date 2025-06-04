@@ -1,0 +1,136 @@
+// Import Bootstrap's functions and variables
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// Custom variables (optional)
+$login-card-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+$login-card-border-radius: 0.5rem;
+
+// Main styling for the login page container
+.bg-light.dark\:bg-transparent {
+  // This class suggests a dark mode toggle.
+  // In SCSS, you'd typically handle dark mode with a parent class
+  // or a media query for prefers-color-scheme.
+  // For demonstration, let's assume a .dark-mode class on the body or html.
+  // If you are using a utility-first CSS framework like Tailwind,
+  // dark:bg-transparent would be handled by the framework itself.
+  // If you need custom dark mode styling with SCSS, here's an example:
+  body.dark-mode & {
+    background-color: transparent !important; // Override bg-light in dark mode
+  }
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+// Styling for the card group
+.c-card-group {
+  box-shadow: $login-card-shadow;
+  border-radius: $login-card-border-radius;
+  overflow: hidden; // Ensures inner cards respect the border-radius
+
+  .c-card {
+    border: none; // Remove default card border
+    border-radius: 0; // Reset individual card border-radius
+
+    &.p-4 {
+      padding: $spacer * 1.5 !important; // Use Bootstrap's spacing variable
+    }
+
+    .c-card-body {
+      padding: 0; // Reset card body padding if card itself has padding
+    }
+  }
+}
+
+// Form specific styling
+form {
+  h1 {
+    font-size: 2.25rem; // Adjust as needed
+    margin-bottom: 0.5rem;
+    color: var(--cui-body-color); // Use CoreUI's text color variable
+  }
+
+  .text-body-secondary {
+    color: var(--cui-body-secondary-color) !important; // Use CoreUI's secondary text color
+    margin-bottom: 1.5rem;
+  }
+
+  .c-input-group {
+    .c-input-group-text {
+      background-color: var(--cui-input-group-addon-bg);
+      border-color: var(--cui-input-group-addon-border-color);
+      color: var(--cui-input-group-addon-color);
+      padding: 0.75rem 1rem; // Adjust icon padding
+      display: flex;
+      align-items: center;
+
+      svg.c-icon {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    .c-form-control {
+      border-color: var(--cui-input-border-color);
+      &:focus {
+        border-color: var(--cui-input-focus-border-color);
+        box-shadow: var(--cui-input-focus-box-shadow);
+      }
+    }
+  }
+
+  .alert.alert-danger {
+    color: var(--cui-danger-color);
+    background-color: var(--cui-danger-bg);
+    border-color: var(--cui-danger-border-color);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.375rem;
+  }
+
+  .c-row {
+    margin-top: 1.5rem; // Space above buttons
+
+    .c-col {
+      &.text-right {
+        text-align: right;
+      }
+    }
+
+    .c-button {
+      padding: 0.6rem 1.2rem; // Adjust button padding
+
+      &.btn-primary {
+        background-color: var(--cui-primary);
+        border-color: var(--cui-primary);
+
+        &:hover {
+          background-color: var(--cui-primary-hover);
+          border-color: var(--cui-primary-hover);
+        }
+      }
+
+      &.btn-link {
+        color: var(--cui-link-color);
+        &:hover {
+          color: var(--cui-link-hover-color);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
