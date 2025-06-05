@@ -51,7 +51,6 @@ export class VendorCreateComponent {
   constructor(public restApi: RestApiService) {
    }
  
-
   onSubmit() {
     console.log('Vendor Created:', this.vendorForm);
     this.visible = true;
@@ -83,17 +82,17 @@ export class VendorCreateComponent {
     
     newRequest['bankDetails']=bankDetails
 
-    console.log(newRequest)  //to watch in web
+    console.log(newRequest)  //to print on web
 
     this.restApi.postAPI('/vendors', newRequest).subscribe(
       data => {
-        console.log(data)
-        this.message = "Vendor created successfully!"
+        
+        this.message = data.message || "Vendor created successfully!";
         this.visible = true;
       },
       err => {
-        console.log(err)
-        this.message=err
+        
+        this.message=err;
         this.visible = true;
       }
     );
