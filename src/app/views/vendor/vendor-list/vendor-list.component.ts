@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TableDirective,  RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent } from '@coreui/angular';
+import { TableDirective, RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent } from '@coreui/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
+import { RestApiService } from '../../../services/rest.api.service';
+
+
 @Component({
   selector: 'app-vendor-list',
   imports: [IconDirective, CommonModule, TableDirective, RowComponent, ColComponent, TextColorDirective, ReactiveFormsModule, CardComponent, CardHeaderComponent, CardBodyComponent],
@@ -12,30 +15,35 @@ import { IconDirective } from '@coreui/icons-angular';
 
 export class VendorListComponent implements OnInit {
 
-  vendorList: { id: number; name: string; company: string; status: string }[] = [];
+  vendorList: { id: number; name: string; companyName: string; status: string }[] = [];
+  constructor(public restApi: RestApiService) { }
 
   ngOnInit() {
+
     this.init();
   }
 
-  init() {  
-    this.vendorList = [
-      { id: 1, name: 'John Doe', company: 'ABC Corp', status: 'Active' },
-      { id: 2, name: 'Jane Smith', company: 'XYZ Inc', status: 'Inactive' },
-      { id: 3, name: 'Alice Johnson', company: 'LMN Ltd', status: 'Active' },
-      { id: 4, name: 'Bob Brown', company: 'OPQ Co', status: 'Inactive' },
-      { id: 5, name: 'Charlie Davis', company: 'RST LLC', status: 'Active' },
-      { id: 6, name: 'Diana Evans', company: 'UVW Group', status: 'Inactive' },
-      { id: 7, name: 'Ethan Foster', company: 'XYZ Corp', status: 'Active' },
-      { id: 8, name: 'Fiona Green', company: 'ABC Inc', status: 'Inactive' },
-      { id: 9, name: 'George Harris', company: 'LMN Ltd', status: 'Active' },
-      { id: 10, name: 'Hannah Ivers', company: 'OPQ Co', status: 'Inactive' }
-    ];
-    console.log(this.vendorList);
+  init() {
+    this.restApi.getAPI('/vendors?page=0&size=500').subscribe(
+      data => {
+        this.vendorList=data.data.content;
+       
+            },
+      err => {
+        
+        
+      }
+    );
+
+
   }
+
 
   deleteVendor(id: number) {
     this.vendorList = this.vendorList.filter(vendor => vendor.id !== id);
-  }
+}
 
 }
+
+
+

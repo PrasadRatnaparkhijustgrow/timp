@@ -66,14 +66,19 @@ export class RestApiService {
 
   // Error handling
   handleError(error : any) {
+    
+    
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
+      
       // Get client-side error
       errorMessage = error.error.message;
-    } else if (error.message) {
+    } else if (error.error) {
+      
       // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = error.error.message || error.error;
     } else {
+      
       errorMessage = error;
     }
     //window.alert(error);
