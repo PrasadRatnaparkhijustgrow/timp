@@ -18,6 +18,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service'; // Adjust the path as necessary
 import { FormsModule } from '@angular/forms'; // <--- IMPORTANT: Import FormsModule
+import { RestApiService } from '../../services/rest.api.service';
 
 @Component({
   selector: 'app-login',
@@ -48,16 +49,17 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(public restApi: RestApiService , private router: Router) { }
 
   onSubmit(): void {
     this.errorMessage = ''; // Clear previous error messages
     console.log('Login attempt with:', this.username, this.password); // For debugging
 
-    // It's crucial that authService.login returns an Observable<boolean>
-    this.authService.login(this.username, this.password).subscribe(
-      success => {
-        if (success) {
+    const payload = { username: this.username, password: this.password };
+     this.restApi.postAPI('/auth/login', payload).subscribe(
+      data => {
+        console.log('Login response:', data); // Log the response for debugging
+        if (data) {
           console.log('Login successful, navigating to /dashboard'); // For debugging
           this.router.navigate(['/dashboard']); // Navigate to the dashboard on successful login
         } else {

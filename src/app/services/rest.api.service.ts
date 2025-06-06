@@ -9,7 +9,13 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class RestApiService {
+<<<<<<< HEAD
   private apiURL = environment.apiUrl || 'http://localhost:8445/api';
+=======
+
+  // Define API
+  private apiURL = environment.apiUrl || 'http://localhost:8080';
+>>>>>>> origin/dev
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
@@ -42,6 +48,7 @@ export class RestApiService {
       .pipe(catchError(this.handleError));
   }
 
+<<<<<<< HEAD
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'An unexpected error occurred.';
     
@@ -49,6 +56,24 @@ export class RestApiService {
       errorMessage = `Client-side error: ${error.error.message}`;
     } else if (error.status) {
       errorMessage = `Server-side error [${error.status}]: ${error.message}`;
+=======
+  // Error handling
+  handleError(error : any) {
+    
+    
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else if (error.error) {
+      
+      // Get server-side error
+      errorMessage = error.error.message || error.error;
+    } else {
+      
+      errorMessage = error;
+>>>>>>> origin/dev
     }
 
     console.error('API Error:', errorMessage);

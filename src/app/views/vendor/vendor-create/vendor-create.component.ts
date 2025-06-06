@@ -19,24 +19,30 @@ import { RestApiService } from '../../../services/rest.api.service';
 })
 export class VendorCreateComponent {
 
+  message = "Vendor created successfully!"
+
   vendorForm = {
-    vendorName: 'John Doe',
+    vendorName: 'Virat Koahli',
     companyName: 'Doe Enterprises',
-    email: 'johndoe@example.com',
+    email: 'virat@example.com',
     phone: '1234567890',
     address: '123 Main Street',
     city: 'Metropolis',
-    state: 'StateName',
-    district: 'DistrictName',
-    zip: '123456',
+    state: 'Delhi',
+    district: 'NCR',
+    pincode: '123456',
+    country:'India',
     gst: 'GST12345',
     pan: 'PAN12345',
     aadhar: 'ADFAFAFAFAF',
-    accountHolder: 'John Doe',
+    status:'ACTIVE',
+    accountHolder: 'virat kohli',
     bankName: 'Bank of Example',
     branchName: 'Main Branch',
     ifsc: 'IFSC1234',
-    acnumber: '1234567890123456'
+    acnumber: '1234567890123456',
+    acType:'SAVINGS',
+    upiId:'ashdg@wyg'
 
   };
 
@@ -45,16 +51,49 @@ export class VendorCreateComponent {
   constructor(public restApi: RestApiService) {
    }
  
-
   onSubmit() {
     console.log('Vendor Created:', this.vendorForm);
     this.visible = true;
-    this.restApi.postAPI('/vendors/create', this.vendorForm).subscribe(
+    var newRequest={}
+    newRequest['name']=this.vendorForm['vendorName']
+    newRequest['companyName']=this.vendorForm['companyName']
+    newRequest['email']=this.vendorForm['email']
+    newRequest['phone']=this.vendorForm['phone']
+    newRequest['address']=this.vendorForm['address']
+    newRequest['city']=this.vendorForm['city']
+    newRequest['district']=this.vendorForm['district']
+    newRequest['state']=this.vendorForm['state']
+    newRequest['country']=this.vendorForm['country']
+    newRequest['pincode']=this.vendorForm['pincode']
+    newRequest['gstNumber']=this.vendorForm['gst']
+    newRequest['panNumber']=this.vendorForm['pan']
+    newRequest['aadhaarNumber']=this.vendorForm['aadhar']
+    newRequest['status']=this.vendorForm['status']
+    
+    var bankDetails={}
+    bankDetails['accountHolder']=this.vendorForm['accountHolder']
+    bankDetails['bankName']=this.vendorForm['bankName']
+    bankDetails['branchName']=this.vendorForm['branchName']
+    bankDetails['ifscCode']=this.vendorForm['ifsc']
+    bankDetails['accountNumber']=this.vendorForm['acnumber']
+    bankDetails['accountTyp']=this.vendorForm['acType']
+    bankDetails['upiId']=this.vendorForm['upiId']
+
+    
+    newRequest['bankDetails']=bankDetails
+
+    console.log(newRequest)  //to print on web
+
+    this.restApi.postAPI('/api/vendors', newRequest).subscribe(
       data => {
-        console.log(data)
+        
+        this.message = data.message || "Vendor created successfully!";
+        this.visible = true;
       },
       err => {
-        console.log(err)
+        
+        this.message=err;
+        this.visible = true;
       }
     );
   }
@@ -63,7 +102,4 @@ export class VendorCreateComponent {
     this.visible = !this.visible;
   }
 
-  handleLiveDemoChange(event: any) {
-    this.visible = event;
-  }
 }

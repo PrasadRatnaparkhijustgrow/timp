@@ -6,11 +6,11 @@
       </c-card-header>
       <c-card-body>
         <form class="row g-3">
-          <c-col md="12">
+          <c-col md="">
             <label cLabel for="venderName">Vendor Name</label>
             <input cFormControl id="venderName" type="text" [(ngModel)]="vendorForm.vendorName" name="vendorName" />
           </c-col>
-          <c-col md="12">
+            <c-col md="12">
             <label cLabel for="companyName">Company Name</label>
             <input cFormControl id="companyName" type="text" [(ngModel)]="vendorForm.companyName" name="companyName"/>
           </c-col>
@@ -41,23 +41,44 @@
             <label cLabel for="city">City</label>
             <input cFormControl id="city" [(ngModel)]="vendorForm.city" name="city" />
           </c-col>
-          <c-col md="5">
-            <label cLabel for="state">State</label>
-            <select cSelect id="state">
-              <option>Choose...</option>
-              <option>...</option>
-            </select>
-          </c-col>
+         
           <c-col md="5">
             <label cLabel for="district">District</label>
             <select cSelect id="district">
               <option>Choose...</option>
-              <option>...</option>
+              <option>PUNE</option>
+              <option>BEED</option>
+              <option>SANGALI</option>
+              <option>SATARA</option>
+              <option>MUMBAI</option>
             </select>
           </c-col>
-          <c-col md="2">
-            <label cLabel for="zip">Zip</label>
-            <input cFormControl id="zip" [(ngModel)]="vendorForm.zip" name="zip"/>
+
+          <c-col md="5">
+            <label cLabel for="state">State</label>
+            <select cSelect id="state">
+              <option>Choose...</option>
+              <option>MAHARASHTRA</option>
+              <option>KARNATAKA</option>
+              <option>GOA</option>
+              <option>J&K</option>
+              <option>PUNJAB</option>
+            </select>
+          </c-col>
+          <c-col md="5">
+            <label cLabel for="country">Country</label>
+            <select cSelect id="country">
+              <option>Choose...</option>
+              <option>India</option>
+              <option>USA</option>
+              <option>UK</option>
+              <option>SINGAPORE</option>
+              <option>JAPAN</option>
+            </select>
+          </c-col>
+          <c-col md="3">
+            <label cLabel for="pincode">Pincode</label>
+            <input cFormControl id="pincode" [(ngModel)]="vendorForm.pincode" name="pincode"/>
           </c-col>
         </form>
       </c-card-body>
@@ -81,6 +102,10 @@
           <c-col md="12">
             <label cLabel for="aadhar">Aadhar</label>
             <input cFormControl id="aadhar" type="text" [(ngModel)]="vendorForm.aadhar" name="aadhar"/>
+          </c-col> 
+          <c-col md="12">
+            <label cLabel for="status">Status</label>
+            <input cFormControl id="status" type="text" [(ngModel)]="vendorForm.status" name="status"/>
           </c-col>   
         </form>
       </c-card-body>
@@ -113,6 +138,17 @@
             <label cLabel for="acnumber">Account Number</label>
             <input cFormControl id="acnumber" type="text" [(ngModel)]="vendorForm.acnumber" name="acnumber"/>
           </c-col>  
+
+          <c-col md="6">
+            <label cLabel for="acType">Account Type</label>
+            <input cFormControl id="acType" type="text" [(ngModel)]="vendorForm.acType" name="acType"/>
+          </c-col>  
+
+          <c-col md="6">
+            <label cLabel for="upiId">UPI ID</label>
+            <input cFormControl id="upiId" type="text" [(ngModel)]="vendorForm.upiId" name="upiId"/>
+          </c-col>  
+          
         </form>
       </c-card-body>
     </c-card>
@@ -127,11 +163,11 @@
   </c-col>
 </c-row>
 
-<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+<c-modal id="liveDemoModal" [visible]="visible">
   <c-modal-header>
     <h5 cModalTitle>Info</h5>
   </c-modal-header>
-  <c-modal-body>Vendor created successfully!</c-modal-body>
+  <c-modal-body>{{message}}</c-modal-body>
   <c-modal-footer>
     <button (click)="toggleLiveDemo()" cButton color="secondary">
       OK

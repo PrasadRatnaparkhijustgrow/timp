@@ -8,7 +8,7 @@ export function getMenuForRole(userRoles: string[]) {
   if (userRoles.includes('ROLE_ADMIN')) {
     menu.push(
       {
-        name: 'Dashboard', url: '/dashboard', iconComponent: { name: 'cil-speedometer' },
+        name: 'Dashboard', url: '/dashboard',
         badge: {
           color: 'info',
           text: 'NEW'
@@ -16,7 +16,6 @@ export function getMenuForRole(userRoles: string[]) {
       },
 
       { name: 'Vendor Management',
-        iconComponent: { name: 'cil-people' },
         children: [
           { name: 'View Vendors', url: '/vendors', iconComponent: { name: 'cil-people' } },
           { name: 'Create Vendor', url: '/vendors/create', iconComponent: { name: 'cil-user-follow' } },
@@ -28,7 +27,6 @@ export function getMenuForRole(userRoles: string[]) {
      
       { name: 'Task Management',
         url: '/tasks',
-        iconComponent: { name: 'cil-list' } ,
         children: [
           { name: 'View Tasks', url: '/tasks', iconComponent: { name: 'cil-list' } },
           { name: 'Create Task', url: '/tasks/create', iconComponent: { name: 'cil-notes' } },
@@ -39,7 +37,6 @@ export function getMenuForRole(userRoles: string[]) {
     
       { name: 'Reports',
         url: '/reports',
-        iconComponent: { name: 'cil-chart' },
         children: [
           { name: 'System Reports', url: '/reports/system', iconComponent: { name: 'cil-chart' } },
           { name: 'Vendor Reports', url: '/reports/vendors', iconComponent: { name: 'cil-chart' } },

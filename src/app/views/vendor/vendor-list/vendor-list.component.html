@@ -8,18 +8,19 @@
         <table [bordered]="true" [hover]="true" [striped]="true" cTable >
             <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">Id</th>
               <th scope="col">Name</th>
-              <th scope="col">Company</th>
+              <th scope="col">CompanyName</th>
               <th scope="col">Status</th>
+
               <th scope="col" class="d-grid gap-2 d-md-flex justify-content-md-center">Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let vendor of vendorList; let i = index" [attr.data-index]="i">
+            <tr *ngFor="let vendor of vendorList; let i = index" [attr.data-index]="i">  
               <th scope="row">{{i + 1}}</th>
                 <td>{{vendor.name}}</td>
-                <td>{{vendor.company}}</td>
+                <td>{{vendor.companyName}}</td>
                 <td>{{vendor.status}}</td>
                 <td>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-center">
@@ -31,7 +32,7 @@
                     </button>
                     <button type="button" class="btn btn-sm" (click)="deleteVendor(vendor.id)">
                         <svg cIcon name="cilTrash"></svg>
-                    </button>                 
+                    </button>          
                   </div>
                 </td>
             </tr>

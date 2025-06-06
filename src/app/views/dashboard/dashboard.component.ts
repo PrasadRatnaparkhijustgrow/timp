@@ -1,5 +1,5 @@
 import { DOCUMENT, NgStyle } from '@angular/common';
-import { Component, DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ChartOptions } from 'chart.js';
 import {
@@ -139,12 +139,8 @@ export class DashboardComponent implements OnInit {
 
   public mainChart: IChartProps = { type: 'line' };
   public mainChartRef: WritableSignal<any> = signal(undefined);
-  #mainChartRefEffect = effect(() => {
-    if (this.mainChartRef()) {
-      this.setChartStyles();
-    }
-  });
-  public chart: Array<IChartProps> = [];
+
+  public chart: IChartProps[] = [];
   public trafficRadioGroup = new FormGroup({
     trafficRadio: new FormControl('Month')
   });
