@@ -11,7 +11,7 @@ export class AuthService {
   private isAuthenticated = false; 
 
   
-  constructor('http://timp.thingsrms.com:8080/auth/login') { }
+  constructor() { }
 
   login(username: string, password: string): Observable<boolean> {
     
